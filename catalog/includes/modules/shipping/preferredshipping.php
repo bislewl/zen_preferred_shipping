@@ -1,19 +1,19 @@
 <?php
 
 /**
- *  preferred_shipping.php
+ *  preferredshipping.php
  *
  * @package
- * @copyright Copyright 2003-2015 Zen Cart Development Team
+ * @copyright Copyright 2003-2016 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @version Author: bislewl  12/13/2016 1:32 PM Modified in zen_preferred_shipping
  */
+
 class preferredshipping extends base
 {
     var $code, $title, $description, $icon, $enabled;
 
-// class constructor
     function __construct()
     {
         global $order, $db;
@@ -22,11 +22,10 @@ class preferredshipping extends base
         $this->title = MODULE_SHIPPING_PREFERRED_SHIPPING_TEXT_TITLE;
         $this->description = MODULE_SHIPPING_PREFERRED_SHIPPING_TEXT_DESCRIPTION;
         $this->sort_order = MODULE_SHIPPING_PREFERRED_SHIPPING_SORT_ORDER;
-        $this->icon = '';
+        $this->icon = MODULE_SHIPPING_PREFERRED_SHIPPING_ICON;
         $this->tax_class = MODULE_SHIPPING_PREFERRED_SHIPPING_TAX_CLASS;
         $this->tax_basis = MODULE_SHIPPING_PREFERRED_SHIPPING_TAX_BASIS;
 
-        // disable only when entire cart is free shipping
         if (zen_get_shipping_enabled($this->code)) {
             $this->enabled = ((MODULE_SHIPPING_PREFERRED_SHIPPING_STATUS == 'True') ? true : false);
         }
